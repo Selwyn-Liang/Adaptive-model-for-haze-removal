@@ -13,7 +13,7 @@ from skimage import transform
 
 def TransmissionEstimate(im_path, height, width):
 	caffe.set_mode_cpu()
-	net = caffe.Net('deploy/Dehaze_SUN_deploy.prototxt', 'model/gan_iter_95000.caffemodel', caffe.TEST)
+	net = caffe.Net('Dehaze_SUN_deploy.prototxt', 'gan_iter_95000.caffemodel', caffe.TEST)
         net.blobs['data'].reshape(1,3,height,width) # (batch_size,c,h,w)
         
 	transformers = caffe.io.Transformer({'data': net.blobs['data'].data.shape})
